@@ -13,9 +13,10 @@ import uuid
 from dotenv import load_dotenv
 load_dotenv()
 
-with open('upload-images.py') as file:
+with open('upload-images.py', 'rb') as file:
     # Is it common to have a singleton module? 
     # wait, am I just using route here so I don't YET need to worry about assigning roles/groups security policies yet? 
+    # https://hackernoon.com/resolving-typeerror-a-bytes-like-object-is-required-not-str-in-python
     client = boto3.client(
         'ec2', region_name='us-east-1',
         aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'], # todo: use env vars
