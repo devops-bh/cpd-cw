@@ -17,7 +17,7 @@ with open('upload-images.py') as file:
     # Is it common to have a singleton module? 
     # wait, am I just using route here so I don't YET need to worry about assigning roles/groups security policies yet? 
     client = boto3.client(
-        'ec2',
+        'ec2', region_name='us-east-1',
         aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'], # todo: use env vars
         aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'], # todo: use env vars
         aws_session_token=os.environ['AWS_SESSION_TOKEN'] # todo: use env vars
