@@ -34,7 +34,7 @@ with open('upload-images.py', 'rb') as file:
                             UserData=base64.b64encode(file.read())
                             )
     """
-    client.run_instances(ImageId='ami-'+str(uuid.uuid4()), MinCount=1, MaxCount=1,
+    client.run_instances(ImageId='ami-08e4e35cccc6189f4', MinCount=1, MaxCount=1,
                             UserData=base64.b64encode(file.read())
                             )
 
