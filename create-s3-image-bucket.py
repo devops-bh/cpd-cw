@@ -19,7 +19,7 @@ client = boto3.client(
 # I assume this defaults to a general purpose bucket? 
 # How would I specify read/write permissions? 
 response = client.create_bucket(
-    Bucket='images-bucket-'+uuid.uuid4(),
+    Bucket='images-bucket-'+str(uuid.uuid4()),
 )
 
 print(response)
