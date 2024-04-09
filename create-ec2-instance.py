@@ -25,7 +25,15 @@ with open('upload-images.py') as file:
 
     # todo: remember to append student id 
     # https://boto3.amazonaws.com/v1/documentation/api/1.9.42/guide/migrationec2.html?highlight=create_instances
+    """
+    # this link implies that the newer method is create_instances, but despite referencing boto3 & not boto, 
+    # apparently the method does not exist :/ 
+    # https://boto3.amazonaws.com/v1/documentation/api/1.9.42/guide/migrationec2.html?highlight=create_instances
     client.create_instances(ImageId='ami-'+str(uuid.uuid4()), MinCount=1, MaxCount=1,
+                            UserData=base64.b64encode(file.read())
+                            )
+    """
+    client.run_instances(ImageId='ami-'+str(uuid.uuid4()), MinCount=1, MaxCount=1,
                             UserData=base64.b64encode(file.read())
                             )
 
