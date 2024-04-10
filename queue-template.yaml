@@ -1,18 +1,18 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
-  FaceRecQueue:
+  FaceAnalysisQueue:
     Properties:
-      QueueName: MyQueue.fifo
-      FifoQueue: true
+      QueueName: FaceAnalysisQueue
+      FifoQueue: false
       ContentBasedDeduplication: true
     Type: AWS::SQS::Queue
 Outputs:
   QueueName:
     Description: The name of the queue
-    Value: !GetAtt FaceRecQueue.QueueName
+    Value: FaceAnalysisQueue.QueueName
   QueueURL:
     Description: The URL of the queue
-    Value: !Ref FaceRecQueue
+    Value: FaceAnalysisQueue
   QueueARN:
     Description: The ARN of the queue
-    Value: !GetAtt FaceRecQueue.Arn
+    Value: FaceAnalysisQueue.Arn
