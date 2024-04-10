@@ -1,6 +1,7 @@
 # this runs inside the ec2 instace created by create-ec2-instance.py
 import boto3
 import os 
+from botocore.exceptions import ClientError
 import time
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,12 +18,17 @@ client = boto3.client(
 
 # append student id 
 # could maybe store uuids in an env or a JSON file? 
-bucket = '/images-bucket-a8b52607-050f-4b06-bf98-9c10814e098a' 
 
 # ideally this could use the os + path packages to figure out number of images in file 
-for image_index in range(1, 5):
+bucket_name = "images-bucket-a8b52607-050f-4b06-bf98-9c10814e098a"
+# I may not even need this for loop, & maybe be able to upload the entire folder but this seems simpler 
+for image_index in range(1, 6):
     time.sleep(10)
-    file_name = 'image'+str(i)+".jpg" # is file_name the name & path? 
-    key_name = 'image'+str(image_index)
     # I assume asyncio could do this asynchronously if there were a large volume of images 
-    client.upload_file('./images/' + file_name, bucket, key_name)
+    image_path = f"images/image{image_index}.jpg"
+    image_key = f"images/image{image_index}.jpg" # This is the 'Key' parameter
+    client.upload_file(image_path, bucket_name, image_key)
+
+# Specify your bucket name and the path to the image
+
+
