@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  FaceRecQueue:
+    Properties:
+      QueueName: MyQueue.fifo
+      FifoQueue: true
+      ContentBasedDeduplication: true
+    Type: AWS::SQS::Queue
+Outputs:
+  QueueName:
+    Description: The name of the queue
+    Value: !GetAtt FaceRecQueue.QueueName
+  QueueURL:
+    Description: The URL of the queue
+    Value: !Ref FaceRecQueue
+  QueueARN:
+    Description: The ARN of the queue
+    Value: !GetAtt FaceRecQueue.Arn
