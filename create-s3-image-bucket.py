@@ -1,6 +1,7 @@
 import boto3
 import os
 import uuid
+import time
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -18,8 +19,20 @@ client = boto3.client(
 # one of the main differences is how the objects are stored 
 # I assume this defaults to a general purpose bucket? 
 # How would I specify read/write permissions? 
+
 response = client.create_bucket(
-    Bucket='images-bucket-'+str(uuid.uuid4()),
+        Bucket='images-bucket-'+str(uuid.uuid4()),
 )
 
-print(response)
+"""
+hacky way to give the bucket time to be created 
+better ways of doing so may be to poll the head_object to determine if the bucket exists 
+but I am assuming that the create_bucket function operates on eventual consistency in that 
+the bucket will eventually be created, meaning that even without async code, the 
+following code will still be called before the bucket is actually created
+I've seen other APIs use a callback URL (webhook) for this 
+"""
+#time.sleep(60)
+# I briefly considered putting the Queue template file upload code here, 
+# but I had already created the bucket, so I guess this is since I'm too lazy to delete resources & repeat the processes 
+
