@@ -21,6 +21,8 @@ client = boto3.client(
 # How would I specify read/write permissions? 
 
 response = client.create_bucket(
+    # I think its possible to have the bucket name as just 
+    # images-bucket if I somehow prevent the bucket from being availible to the public 
         Bucket='images-bucket-'+str(uuid.uuid4()),
 )
 

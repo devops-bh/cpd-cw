@@ -1,15 +1,18 @@
-AWSTemplateFormatVersion: '2010-09-09'
 Resources:
- FacialAnalysisTable:
-    Type: 'AWS::DynamoDB::Table'
+ FaceAnalysisesTable:
+    Type: AWS::DynamoDB::Table
     Properties:
-      TableName: FacialAnalysisTable
+      TableName: FaceAnalysises
       AttributeDefinitions:
         - AttributeName: ImageName
           AttributeType: S
-        - AttributeName: Confidence
-          AttributeType: N
-        - AttributeName: Emotion
+        - AttributeName: CalmConfidenceScore
+          AttributeType: S
+        - AttributeName: HappyConfidenceScore
+          AttributeType: S
+        - AttributeName: AngryConfidenceScore
+          AttributeType: S
+        - AttributeName: FrustratedConfidenceScore
           AttributeType: S
       KeySchema:
         - AttributeName: ImageName
@@ -17,15 +20,3 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-      GlobalSecondaryIndexes:
-        - IndexName: EmotionConfidenceIndex
-          KeySchema:
-            - AttributeName: Emotion
-              KeyType: HASH
-            - AttributeName: Confidence
-              KeyType: RANGE
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
