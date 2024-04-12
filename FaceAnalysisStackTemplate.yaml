@@ -1,0 +1,18 @@
+Resources:
+  FaceAnalysisesDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: FaceAnalysisesDB
+      AttributeDefinitions:
+        - AttributeName: ImageName
+          AttributeType: S
+      KeySchema:
+        - AttributeName: ImageName
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: KEYS_ONLY
+  FaceAnalysisQueue:
+    Type: AWS::SQS::Queue
