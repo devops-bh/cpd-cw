@@ -12,7 +12,7 @@ Outputs:
     Value: !Ref FaceAnalysisQueue
  QueueURL:
     Description: The URL of the queue
-    Value: !GetAtt FaceAnalysisQueue.Arn
+    Value: !GetAtt FaceAnalysisQueue.Url
  QueueARN:
     Description: The ARN of the queue
     Value: !GetAtt FaceAnalysisQueue.Arn

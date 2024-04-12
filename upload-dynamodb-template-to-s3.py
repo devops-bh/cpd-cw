@@ -18,7 +18,7 @@ client = boto3.client(
 # but the most simplest & quickest way is to point AWS to a template which is stored in an S3 bucket   
 # You'd likely have different buckets but I am just going to reuse the images bucket for simplicity 
 # also, rather than hardcoding bucket names, I could possibly do something like (JS) buckets.foreach(bucket => {if bucket.name.includes('images')} )
-bucket_name = "images-bucket-a8b52607-050f-4b06-bf98-9c10814e098a"
+bucket_name = "images-bucket-540d97a4-b538-4e96-bb40-172e3efa7357"
 # I don't think DynamoDB requires you to define the loose equivalent of columns up front, 
 # instead you only seem to need the partition name 
 # but I wanted to try defining the columns up first 

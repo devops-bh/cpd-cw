@@ -20,11 +20,13 @@ client = boto3.client(
 # I assume this defaults to a general purpose bucket? 
 # How would I specify read/write permissions? 
 
+bucket_name = 'images-bucket-'+str(uuid.uuid4())
 response = client.create_bucket(
     # I think its possible to have the bucket name as just 
     # images-bucket if I somehow prevent the bucket from being availible to the public 
-        Bucket='images-bucket-'+str(uuid.uuid4()),
+        Bucket=bucket_name,
 )
+print(bucket_name)
 
 """
 hacky way to give the bucket time to be created 

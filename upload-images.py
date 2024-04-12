@@ -21,7 +21,8 @@ client = boto3.client(
 
 # ideally this could use the os + path packages to figure out number of images in file 
 #bucket_name = "images-bucket-a8b52607-050f-4b06-bf98-9c10814e098a"
-bucket_name = "images-bucket-5810aa5b-a4e8-41e3-bbe4-0d389d738f14"
+#bucket_name = "images-bucket-5810aa5b-a4e8-41e3-bbe4-0d389d738f14"
+bucket_name = "images-bucket-540d97a4-b538-4e96-bb40-172e3efa7357"
 # I may not even need this for loop, & maybe be able to upload the entire folder but this seems simpler 
 for image_index in range(1, 6):
     time.sleep(10)

@@ -1,18 +1,10 @@
 Resources:
- FaceAnalysisesTable:
+ FaceAnalysisesDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: FaceAnalysises
+      TableName: FaceAnalysisesDB
       AttributeDefinitions:
         - AttributeName: ImageName
-          AttributeType: S
-        - AttributeName: CalmConfidenceScore
-          AttributeType: S
-        - AttributeName: HappyConfidenceScore
-          AttributeType: S
-        - AttributeName: AngryConfidenceScore
-          AttributeType: S
-        - AttributeName: FrustratedConfidenceScore
           AttributeType: S
       KeySchema:
         - AttributeName: ImageName
@@ -21,4 +13,4 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
       StreamSpecification:
-        StreamViewType: NEW_IMAGES
+        StreamViewType: KEYS_ONLY
