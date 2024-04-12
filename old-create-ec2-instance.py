@@ -41,11 +41,6 @@ with open('upload-images.py', 'rb') as file:
                         # using the replace function, but ultimately figured I didn't have enough time 
                         # since I lost alot of time due my account being bugged & not letting me 
                         # ssh into ec2 instance, the deactivation & reactivation of the AWS account fixed this 
-                        # one issue is the ec2 instance not being able to access S3 
-                        # not sure if this is VPC related, but I could just give the ec2 instance its own env variable 
-                        # and auth via the env file, but then I'm not sure if the instance will execute the python script 
-                        # as python 2 or python 3, this script is python 3 , so I'd probably want 
-                        # the EC2 instance to run a bash script, and have the bash script run python 3 
                        #     UserData=base64.b64encode(file.read()), KeyName='vockey'
                             )
 

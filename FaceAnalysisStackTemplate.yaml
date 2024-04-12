@@ -1,18 +1,18 @@
 Resources:
-  FaceAnalysisesDBTable:
+  Queue:
+    Type: AWS::SQS::Queue
+  FaceAnalysisDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: FaceAnalysisesDB
       AttributeDefinitions:
         - AttributeName: ImageName
           AttributeType: S
-      KeySchema:
-        - AttributeName: ImageName
-          KeyType: HASH
+      BillingMode: PROVISIONED
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
+      KeySchema:
+        - AttributeName: ImageName
+          KeyType: HASH
       StreamSpecification:
         StreamViewType: KEYS_ONLY
-  FaceAnalysisQueue:
-    Type: AWS::SQS::Queue
